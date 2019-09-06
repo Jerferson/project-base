@@ -1,0 +1,17 @@
+<div class="text-center login-page">
+
+    <form class="form-signin" [formGroup]="loginForm">
+        <img class="mb-4 logo" src="../../assets/logo.PNG" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
+        <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Seu email" required="" autofocus="">
+        <br>    
+        <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Senha" required="">
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Lembrar de mim
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    </form>
+</div>
