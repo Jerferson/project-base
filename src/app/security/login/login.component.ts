@@ -9,6 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  logged = false;
+  loginEmail = false;
+  labelLoged = 'Faça login com...';
 
   constructor(private fb: FormBuilder) { }
 
@@ -19,4 +22,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  login() {
+    this.labelLoged = 'Usuário Logado';
+    this.logged = true;
+  }
+
+  logout() {
+    this.labelLoged = 'Faça login com...';
+    this.loginEmail = false;
+    this.logged = false;
+  }
 }

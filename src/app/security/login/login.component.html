@@ -1,17 +1,46 @@
 <div class="text-center login-page">
+    <div class="container">
 
-    <form class="form-signin" [formGroup]="loginForm">
         <img class="mb-4 logo" src="../../assets/logo.PNG" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
-        <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Seu email" required="" autofocus="">
-        <br>    
-        <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Senha" required="">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Lembrar de mim
-            </label>
+        <h1 class="h3 mb-3 font-weight-normal">{{labelLoged}}</h1>
+
+        <div class="row justify-content-center details-div" *ngIf="logged">
+            <div>
+                <img width="60" src="https://www.pena.com.br/wp-content/uploads/2017/05/user-icon.jpg">
+                <div class="media-body">
+                    <h5 class="mt-0">Genoveva</h5>
+                    <p class="mt-0">genoveva@genoveva.com</p>
+                    <button class="btn btn-info" (click)="logout()">Sair</button>
+                </div>
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-    </form>
+        <div class="group-btn" *ngIf="!logged && !loginEmail">
+            <div class="row justify-content-center div-btn">
+                <button class="btn btn-block btn-outline-primary">Login com Facebook</button>
+            </div>
+            <div class="row justify-content-center div-btn">
+                <button class="btn btn-block btn-outline-danger">Login com Gmail</button>
+            </div>
+            <div class="row justify-content-center div-btn">
+                <button class="btn btn-block btn-outline-success" (click)="loginEmail=true">Login com E-mail</button>
+            </div>
+        </div>
+        <form class="form-signin" [formGroup]="loginForm" *ngIf="!logged && loginEmail">
+            <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Seu email"
+                required="" autofocus="">
+            <br>
+            <input type="password" id="inputPassword" formControlName="password" class="form-control"
+                placeholder="Senha" required="">
+            <br>
+            <!-- <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Lembrar de mim
+                </label>
+            </div> -->
+            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Login</button>
+            <button class="btn btn-lg btn-secondary btn-block" (click)="loginEmail = false"
+                type="submit">Voltar</button>
+            <!-- <p class="mt-5 mb-3 text-muted">© 2017-2018</p> -->
+        </form>
+    </div>
 </div>
