@@ -5,17 +5,30 @@
   margin: auto;
 }
 
-.login-page{
-    height: auto;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #f5f5f5;
+.login-page {
+  height: auto;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+  min-height: -webkit-fill-available;
+
 }
 
-.logo{
-    width: auto;
-    height: 150px;
+.logo {
+  width: auto;
+  height: 150px;
+}
+
+.div-btn {
+  padding-top: 10px;
+}
+
+.group-btn {
+  width: 100%;
+  max-width: 530px;
+  padding: 15px;
+  margin: auto;
 }
