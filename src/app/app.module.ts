@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { LoginService } from './security/login-service/login.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCYxoKyzPBqt7bE426NmBf6srSBRAnbtlQ',
@@ -35,7 +36,7 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
