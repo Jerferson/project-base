@@ -6,7 +6,7 @@
 }
 
 .login-page {
-  height: auto;
+  height: fit-content;
   display: flex;
   -ms-flex-align: center;
   align-items: center;

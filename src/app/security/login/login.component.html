@@ -6,26 +6,26 @@
 
         <div class="row justify-content-center details-div" *ngIf="logged">
             <div>
-                <img width="60" src="https://www.pena.com.br/wp-content/uploads/2017/05/user-icon.jpg">
+                <img width="60" src="{{(user | async)?.photoURL}}">
                 <div class="media-body">
-                    <h5 class="mt-0">Genoveva</h5>
-                    <p class="mt-0">genoveva@genoveva.com</p>
+                    <h5 class="mt-0">{{(user | async)?.displayName}}</h5>
+                    <p class="mt-0">{{(user | async)?.email}}</p>
                     <button class="btn btn-info" (click)="logout()">Sair</button>
                 </div>
             </div>
         </div>
-        <div class="group-btn" *ngIf="!logged && !loginEmail">
+        <div class="group-btn" *ngIf="!logged && !loginWithEmail">
             <div class="row justify-content-center div-btn">
-                <button class="btn btn-block btn-outline-primary">Login com Facebook</button>
+                <button class="btn btn-block btn-outline-primary" (click)="loginFacebook()">Login com Facebook</button>
             </div>
             <div class="row justify-content-center div-btn">
-                <button class="btn btn-block btn-outline-danger">Login com Gmail</button>
+                <button class="btn btn-block btn-outline-danger" (click)="loginGoogle()">Login com Gmail</button>
             </div>
             <div class="row justify-content-center div-btn">
-                <button class="btn btn-block btn-outline-success" (click)="loginEmail=true">Login com E-mail</button>
+                <button class="btn btn-block btn-outline-success" (click)="loginWithEmail=true">Login com E-mail</button>
             </div>
         </div>
-        <form class="form-signin" [formGroup]="loginForm" *ngIf="!logged && loginEmail">
+        <form class="form-signin" [formGroup]="loginForm" *ngIf="!logged && loginWithEmail">
             <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Seu email"
                 required="" autofocus="">
             <br>
@@ -37,8 +37,8 @@
                     <input type="checkbox" value="remember-me"> Lembrar de mim
                 </label>
             </div> -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Login</button>
-            <button class="btn btn-lg btn-secondary btn-block" (click)="loginEmail = false"
+            <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="loginForm.invalid" (click)="loginEmail(email,password)">Login</button>
+            <button class="btn btn-lg btn-secondary btn-block" (click)="loginWithEmail = false"
                 type="submit">Voltar</button>
             <!-- <p class="mt-5 mb-3 text-muted">© 2017-2018</p> -->
         </form>
